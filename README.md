@@ -12,9 +12,9 @@ In this version of momentum it pops up an informational screen whenever open a n
 
 * Interacted with as many as possible APIs.
 
-### DESIGN
+### WIREFRAME
 
-![Wireframe](./assets/images/personal-dashboard.png)
+<img src="./assets/images/personal-dashboard.png" height="400" width="750" />
 
 ### To consider:
 
