@@ -1,5 +1,10 @@
-# This contains secrets, don't store in source control
+# This contains secrets, don't store in source control 
+
+# Sensitive data #
 .env 
 
-# Dependency directories
+# Dependency directories #
 node_modules/
+
+# OS generated files #
+.DS_Store

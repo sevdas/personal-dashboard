@@ -14,7 +14,7 @@ In this version of momentum it pops up an informational screen whenever open a n
 
 ### DESIGN
 
-![Wireframe](./public/images/personal-dashboard.png)
+![Wireframe](./assets/images/personal-dashboard.png)
 
 ### To consider:
 
