@@ -7,7 +7,7 @@ const fetchCryptocurrencies = async (req, res) => {
     const data = await response.json();
     res.send(data);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

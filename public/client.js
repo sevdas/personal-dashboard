@@ -13,7 +13,7 @@ const fetchImages = async () => {
     const url =
       "https://res.cloudinary.com/das6ciypl/image/upload/v1607034134/pexels-rachel-claire-4577419_wlpdih.jpg";
     document.body.style.backgroundImage = `url(${url})`;
-    console.log("Something went wrong! 😭", err);
+    console.error("Something went wrong! 😭", err);
   }
 };
 
@@ -22,11 +22,16 @@ const fetchCryptocurrencies = async () => {
   try {
     const response = await fetch(urlCrypto);
     const data = await response.json();
-    console.log(data.image.large);
-    const dogeImg = document.querySelector(".doge-img");
-    dogeImg.src = `${data.image.thumb}`;
+    // Add the name and icon of the cryptocurrency
+    const cryptoDiv = document.getElementById("crypto-top");
+    cryptoDiv.innerHTML = `
+        <img src=${data.image.small} class="crypto__image" />
+        <span>${data.name}</span>
+     `;
+    // const dogeImg = document.querySelector(".doge-img");
+    // dogeImg.src = `${data.image.small}`;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
