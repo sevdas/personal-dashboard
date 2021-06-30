@@ -23,13 +23,23 @@ const fetchCryptocurrencies = async () => {
     const response = await fetch(urlCrypto);
     const data = await response.json();
     // Add the name and icon of the cryptocurrency
-    const cryptoDiv = document.getElementById("crypto-top");
+    const cryptoDiv = document.getElementById("crypto__top");
     cryptoDiv.innerHTML = `
-        <img src=${data.image.small} class="crypto__image" />
+        <img src=${data.image.small} />
         <span>${data.name}</span>
      `;
-    // const dogeImg = document.querySelector(".doge-img");
-    // dogeImg.src = `${data.image.small}`;
+
+    // Dogecoin prices.
+    const currentPrice = `${data.market_data.current_price.gbp}`;
+    const highestPrice = `${data.market_data.high_24h.gbp}`;
+    const lowestPrice = `${data.market_data.low_24h.gbp}`;
+
+    const cryptoCurrencyDiv = document.getElementById("crypto");
+    cryptoCurrencyDiv.innerHTML += `
+    <p>► £ ${currentPrice}</p>
+    <p>▼ £ ${highestPrice}</p>
+    <p>▲ £ ${lowestPrice}</p>
+    `;
   } catch (err) {
     console.error(err);
   }
@@ -39,3 +49,28 @@ if (window.location.href === "http://localhost:3000/") {
   fetchImages();
   fetchCryptocurrencies();
 }
+
+// Current time
+const today = new Date();
+
+const options = {
+  hour: "2-digit",
+  minute: "2-digit",
+  month: "short",
+  day: "2-digit",
+  hour12: false,
+  timeZoneName: "short",
+  weekday: "short", //"long"
+  // timeStyle: "medium",
+};
+
+function getCurrentTime() {
+  const timeHeading = document.querySelector(".time");
+  const date = new Date();
+  // 'Europe/London'
+  const time = date.toLocaleTimeString("en-uk", options);
+  timeHeading.textContent = time;
+}
+
+//Update time in every other second
+setInterval(getCurrentTime, 1000);

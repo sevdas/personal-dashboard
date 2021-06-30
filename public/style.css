@@ -22,7 +22,7 @@ main {
   justify-content: space-between;
 }
 
-div.top {
+header.container {
   display: flex;
   justify-content: space-between;
 }
@@ -35,11 +35,15 @@ div#crypto {
   font-size: 1.25rem;
 }
 
-div#crypto-top {
+div#crypto > p {
+  margin: 5px;
+}
+
+div#crypto__top {
   display: flex;
   align-items: center;
 }
 
-div#crypto-top > span {
+div#crypto__top > span {
   margin-left: 10px;
 }
