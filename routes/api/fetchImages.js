@@ -3,8 +3,8 @@ const dotenv = require("dotenv"); // read from .env
 dotenv.config();
 
 const MY_ACCESS_KEY = process.env.MY_ACCESS_KEY;
+
 const fetchImages = async (req, res) => {
-  console.log("biri imajlari fetch etti");
   try {
     let url =
       "https://api.unsplash.com/photos/random?client_id=" +
@@ -15,7 +15,13 @@ const fetchImages = async (req, res) => {
     const data = await response.json();
     res.send(data);
   } catch (error) {
-    console.log(error);
+    if (error) {
+      const defaultUrl =
+        "https://res.cloudinary.com/das6ciypl/image/upload/v1607034134/pexels-rachel-claire-4577419_wlpdih.jpg";
+      const response = await fetch(defaultUrl);
+      const data = await response.json();
+      res.send(data);
+    }
     res.status(500).send({ error });
   }
 };
