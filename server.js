@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const path = require("path");
-const apiRouter = require("./routers/api");
-const fetchImages = require("./routers/api/fetchImages");
-const fetchCryptocurrencies = require("./routers/api/fetchCryptocurrencies");
+const apiRouter = require("./routes/api");
+const fetchImages = require("./routes/api/fetchImages");
+const fetchCryptocurrencies = require("./routes/api/fetchCryptocurrencies");
 
 //Handle routing
 app.use(express.static("public"));
