@@ -2,13 +2,13 @@ const fetch = require("node-fetch");
 const dotenv = require("dotenv"); // read from .env
 dotenv.config();
 
-const MY_ACCESS_KEY = process.env.MY_ACCESS_KEY;
+const MY_ACCESS_KEY_IMAGES = process.env.MY_ACCESS_KEY_IMAGES;
 
 const fetchImages = async (req, res) => {
   try {
     let url =
       "https://api.unsplash.com/photos/random?client_id=" +
-      MY_ACCESS_KEY +
+      MY_ACCESS_KEY_IMAGES +
       "&orientation=landscape" +
       "&query=nature";
     const response = await fetch(url);

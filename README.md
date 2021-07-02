@@ -22,3 +22,5 @@ Schema:
 
 - Get a random image from Unsplash and set it as the background
 - Layout the content of the page
+
+* Allow Google Chrome access to Location and Services of your computer.

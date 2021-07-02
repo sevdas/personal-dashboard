@@ -1,3 +1,4 @@
+// Fetch images
 const fetchImages = async () => {
   try {
     let urlImages = "/api/fetchImages";
@@ -17,6 +18,7 @@ const fetchImages = async () => {
   }
 };
 
+// Fetch Cryptocurrencies
 const fetchCryptocurrencies = async () => {
   let urlCrypto = "/api/fetchCryptocurrencies";
   try {
@@ -45,11 +47,6 @@ const fetchCryptocurrencies = async () => {
   }
 };
 
-if (window.location.href === "http://localhost:3000/") {
-  fetchImages();
-  fetchCryptocurrencies();
-}
-
 // Current time
 const today = new Date();
 
@@ -74,3 +71,33 @@ function getCurrentTime() {
 
 //Update time in every other second
 setInterval(getCurrentTime, 1000);
+
+// Access the user's coordinates * by using the Geolocation Web API!
+navigator.geolocation.getCurrentPosition(async (position) => {
+  //Take geolocation data from the client and send it to the server, so it can be saved to the database.
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  const data = { lat, lon };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+  try {
+    const response = await fetch("/api/fetchWeather", options);
+    const jsonData = await response.json();
+    console.log(jsonData);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// Validate server
+if (window.location.href === "http://localhost:3000/") {
+  fetchImages();
+  fetchCryptocurrencies();
+  // fetchWeather();
+}
