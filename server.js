@@ -5,13 +5,15 @@ const path = require("path");
 const apiRouter = require("./routes/api");
 const fetchImages = require("./routes/api/fetchImages");
 const fetchCryptocurrencies = require("./routes/api/fetchCryptocurrencies");
-const fetchWeather = require("./routes/api/fetchWeather");
+const fetchGeoPosition = require("./routes/api/fetchGeoPosition");
+const fetchWeatherByGeoPosition = require("./routes/api/fetchGeoPosition");
 
 //Handle routing
 app.use(express.static("public"));
 
 // Read incoming data as json
 app.use(express.json({ limit: "1mb" }));
+
 //Option 1
 //Middleware
 // app.use("/api", apiRouter);
@@ -19,7 +21,7 @@ app.use(express.json({ limit: "1mb" }));
 //End points
 app.get("/api/fetchImages", fetchImages);
 app.get("/api/fetchCryptocurrencies", fetchCryptocurrencies);
-app.post("/api/fetchWeather", fetchWeather);
+app.post("/api/fetchGeoPosition", fetchGeoPosition);
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "views/index.html"));

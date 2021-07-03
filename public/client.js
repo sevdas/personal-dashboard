@@ -86,18 +86,29 @@ navigator.geolocation.getCurrentPosition(async (position) => {
     },
     body: JSON.stringify(data),
   };
+  //receive response send by server
   try {
-    const response = await fetch("/api/fetchWeather", options);
+    const response = await fetch("/api/fetchGeoPosition", options);
     const jsonData = await response.json();
-    console.log(jsonData);
+    console.log("json data", jsonData);
+
+    //Display over the app
+    const weatherDiv = document.getElementById("weather");
+    const weatherData = jsonData.weather;
+    const iconCode = weatherData.map((elem) => elem.icon);
+    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
+    weatherDiv.innerHTML = `
+               <img src=${iconUrl} alt="weather" />
+               `;
   } catch (err) {
     console.log(err);
   }
+
+  //Display the weather icon
 });
 
 // Validate server
 if (window.location.href === "http://localhost:3000/") {
   fetchImages();
   fetchCryptocurrencies();
-  // fetchWeather();
 }
