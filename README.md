@@ -26,4 +26,4 @@ Schema:
 
 ### Helpers
 
-- ![openWeatherIcon](https://openweathermap.org/weather-conditions)
+- [openWeatherIcon](https://openweathermap.org/weather-conditions)
