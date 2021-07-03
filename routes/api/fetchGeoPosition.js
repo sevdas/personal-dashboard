@@ -12,7 +12,7 @@ const fetchGeoPosition = async (req, res) => {
   try {
     const response = await fetch(
       //By geographic coordinates
-      `http://api.openweathermap.org/data/2.5/weather?lat=${data.lat}&lon=${data.lon}&appid=${MY_ACCESS_KEY_WEATHER}`
+      `http://api.openweathermap.org/data/2.5/weather?lat=${data.lat}&lon=${data.lon}&units=imperial&appid=${MY_ACCESS_KEY_WEATHER}`
     );
     const weatherData = await response.json();
     res.send(weatherData);

@@ -92,19 +92,22 @@ navigator.geolocation.getCurrentPosition(async (position) => {
     const jsonData = await response.json();
     console.log("json data", jsonData);
 
-    //Display over the app
+    //Display weather icon over the app
     const weatherDiv = document.getElementById("weather");
     const weatherData = jsonData.weather;
     const iconCode = weatherData.map((elem) => elem.icon);
     const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
+    //Display the temperature and the city
+    const temperature = Math.round(jsonData.main.temp);
+    const cityName = jsonData.name;
     weatherDiv.innerHTML = `
                <img src=${iconUrl} alt="weather" />
+               <p class="weather-temp">${temperature}°</p>
+               <p class="weather-city">${cityName}</p>
                `;
   } catch (err) {
     console.log(err);
   }
-
-  //Display the weather icon
 });
 
 // Validate server
